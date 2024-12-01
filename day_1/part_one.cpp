@@ -33,7 +33,8 @@ int main(){
   int distance = 0;
   int total = listA.size();
   sort(listA.begin(), listA.end(), [](int a, int b) {return a>b;});
-  for (int i = 1; i <= total; i++){
+  sort(listB.begin(), listB.end(), [](int c, int d) {return c>d;});
+  for (int i = 0; i < total; i++){
     distance += std::abs(listA[i] - listB[i]);
   }
 
