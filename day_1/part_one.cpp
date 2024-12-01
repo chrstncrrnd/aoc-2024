@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdlib>
 #include <fstream>
 #include <string>
@@ -5,29 +6,6 @@
 #include <vector>
 
 #define INPUT_FILE "./input.txt"
-
-// would be quicker to just sort both lists but this was more fun to program
-int nthBiggest(int n, std::vector<int> vec){
-  int *largest = new int[n];
-  int max;
-  int maxInd;
-  for (int i = 0; i < n; i++){
-    max = -1;
-    maxInd = -1;
-    for (int j = 0; j < vec.size(); j ++){
-      if (vec[j] > max){
-        max = vec[j];
-        maxInd = j;
-      }
-    }
-    vec.erase(vec.begin() + maxInd);
-    largest[i] = max;
-  }
-
-  int ret = largest[n-1];
-  delete[] largest;
-  return ret;
-}
 
 int main(){
   std::vector<int> listA;
@@ -54,8 +32,9 @@ int main(){
 
   int distance = 0;
   int total = listA.size();
+  sort(listA.begin(), listA.end(), [](int a, int b) {return a>b;});
   for (int i = 1; i <= total; i++){
-    distance += std::abs(nthBiggest(i, listA) - nthBiggest(i, listB));
+    distance += std::abs(listA[i] - listB[i]);
   }
 
   std::cout << "Total distance: " << distance << std::endl;
