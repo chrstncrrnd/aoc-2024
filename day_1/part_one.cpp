@@ -6,6 +6,7 @@
 
 #define INPUT_FILE "./input.txt"
 
+// would be quicker to just sort both lists but this was more fun to program
 int nthBiggest(int n, std::vector<int> vec){
   int *largest = new int[n];
   int max;
