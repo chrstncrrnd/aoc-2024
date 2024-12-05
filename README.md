@@ -7,3 +7,4 @@ Languages used:
 - Day 2: `Java`
 - Day 3: `Rust`
 - Day 4: `Python`
+- Day 5: `C++`
