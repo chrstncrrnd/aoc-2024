@@ -46,9 +46,7 @@ func startingPosition(lines []string) (int, int) {
 	return 0, 0
 }
 
-func main() {
-	fmt.Println("Part one:")
-
+func PartOne() {
 	lines := readFile("input.txt")
 	total := 0
 	direction := complex(0, -1)
