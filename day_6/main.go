@@ -1,7 +1,6 @@
 package main
 
 import (
-	"day_6/part_one"
 	"day_6/part_two"
 	"fmt"
 )
