@@ -9,3 +9,4 @@ Languages used:
 - Day 4: `Python`
 - Day 5: `C++`
 - Day 6: `Go`
+- Day 7: `Python`
