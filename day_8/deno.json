@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "p1": "deno run --allow-read=. part_one.ts" 
+    "p1": "deno run --allow-read=. part_one.ts", 
+    "p2": "deno run --allow-read=. part_two.ts"
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1"
