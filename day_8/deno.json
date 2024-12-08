@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "p1": "deno run --allow-read=. part_one.ts" 
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1"
+  }
+}
