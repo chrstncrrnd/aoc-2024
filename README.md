@@ -10,3 +10,4 @@ Languages used:
 - Day 5: `C++`
 - Day 6: `Go`
 - Day 7: `Python`
+- Day 8: `TypeScript`
