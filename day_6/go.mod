@@ -1,3 +1,3 @@
-module day_6
+module chrstncrrnd.github.io/day_6
 
 go 1.23.4
