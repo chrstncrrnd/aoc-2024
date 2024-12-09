@@ -1,11 +1,11 @@
 package main
 
 import (
-  "fmt"
-  "chrstncrrnd.github.io/day_9/part_one"
+	"chrstncrrnd.github.io/day_9/part_one"
+	"fmt"
 )
 
 func main() {
-  fmt.Println("Part one:")
-  part_one.PartOne()
+	fmt.Println("Part one:")
+	part_one.PartOne()
 }
