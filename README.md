@@ -11,3 +11,4 @@ Languages used:
 - Day 6: `Go`
 - Day 7: `Python`
 - Day 8: `TypeScript`
+- Day 9: `Go`
