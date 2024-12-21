@@ -12,3 +12,4 @@ Languages used:
 - Day 7: `Python`
 - Day 8: `TypeScript`
 - Day 9: `Go`
+- Day 10: `Rust`
