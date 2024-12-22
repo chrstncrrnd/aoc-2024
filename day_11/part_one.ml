@@ -27,11 +27,9 @@ let blink_stone stone =
     [stone * 2024]
 
 let process_stones stones =
-  print_endline ("List length: " ^ string_of_int (List.length stones));
   List.flatten (List.map blink_stone stones)
 
 let rec process_n_times n stones iter =
-  print_endline ("Blinking" ^ string_of_int iter);
   if iter >= n then
     stones
   else
