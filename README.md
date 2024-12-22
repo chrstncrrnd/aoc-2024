@@ -13,3 +13,4 @@ Languages used:
 - Day 8: `TypeScript`
 - Day 9: `Go`
 - Day 10: `Rust`
+- Day 11: `OCaml`
