@@ -16,8 +16,6 @@ fn load_file(filename: &str) -> Vec<Vec<char>> {
         .collect()
 }
 
-
-
 fn populate_plants(input: &[Vec<char>]) -> HashMap<Pos, Plant> {
     let mut out: HashMap<Pos, Plant> = HashMap::new();
     let width = input.first().unwrap().len();
@@ -40,48 +38,88 @@ fn populate_plants(input: &[Vec<char>]) -> HashMap<Pos, Plant> {
                 n -= 1
             }
 
-            out.insert((x as i32, y as i32), Plant {
-                neighbouring_distinct: n,
-                character: *ch,
-            });
+            out.insert(
+                (x as i32, y as i32),
+                Plant {
+                    neighbouring_distinct: n,
+                    character: *ch,
+                },
+            );
         }
     }
 
     out
 }
 
-fn explore_section(size: (i32, i32), searching_plant_type: char, plants: &HashMap<Pos, Plant>, visited: &mut HashMap<Pos, bool>, position: (i32, i32)){
-    if *visited.get(&position).unwrap_or(&false){
+fn explore_section(
+    size: (i32, i32),
+    searching_plant_type: char,
+    plants: &HashMap<Pos, Plant>,
+    visited: &mut HashMap<Pos, bool>,
+    position: (i32, i32),
+) {
+    if *visited.get(&position).unwrap_or(&false) {
         return;
     }
     if position.0 < 0 || position.1 < 0 || position.0 >= size.0 || position.1 >= size.1 {
         return;
-    } 
+    }
 
-    if searching_plant_type != plants.get(&position).unwrap().character{
+    if searching_plant_type != plants.get(&position).unwrap().character {
         return;
     }
     visited.insert(position, true);
-    explore_section(size, searching_plant_type, plants, visited, (position.0 + 1, position.1));
-    explore_section(size, searching_plant_type, plants, visited, (position.0, position.1 + 1));
-    explore_section(size, searching_plant_type, plants, visited, (position.0 - 1, position.1));
-    explore_section(size, searching_plant_type, plants, visited, (position.0, position.1 - 1));
+    explore_section(
+        size,
+        searching_plant_type,
+        plants,
+        visited,
+        (position.0 + 1, position.1),
+    );
+    explore_section(
+        size,
+        searching_plant_type,
+        plants,
+        visited,
+        (position.0, position.1 + 1),
+    );
+    explore_section(
+        size,
+        searching_plant_type,
+        plants,
+        visited,
+        (position.0 - 1, position.1),
+    );
+    explore_section(
+        size,
+        searching_plant_type,
+        plants,
+        visited,
+        (position.0, position.1 - 1),
+    );
 }
 
-fn get_total(plants: &HashMap<Pos, Plant>, size: (i32, i32)) -> i32{
+fn get_total(plants: &HashMap<Pos, Plant>, size: (i32, i32)) -> i32 {
     let mut global_visited: HashMap<Pos, bool> = HashMap::new();
     let mut total = 0;
-    for x in 0..size.0{
-        for y in 0..size.1{
-            if *global_visited.get(&(x, y)).unwrap_or(&false){
+    for x in 0..size.0 {
+        for y in 0..size.1 {
+            if *global_visited.get(&(x, y)).unwrap_or(&false) {
                 continue;
             }
             let mut visited = HashMap::new();
-            let ch = plants.get(&(x,y)).expect("Plant does not exist!").character;
+            let ch = plants
+                .get(&(x, y))
+                .expect("Plant does not exist!")
+                .character;
             explore_section(size, ch, plants, &mut visited, (x, y));
             let area = visited.len() as i32;
             global_visited.extend(&visited);
-            let perimiter: i32 = visited.clone().into_keys().map(|pos| plants.get(&pos).unwrap().neighbouring_distinct).sum();
+            let perimiter: i32 = visited
+                .clone()
+                .into_keys()
+                .map(|pos| plants.get(&pos).unwrap().neighbouring_distinct)
+                .sum();
             let cost = area * perimiter;
             visited.clear();
             total += cost;
@@ -89,7 +127,6 @@ fn get_total(plants: &HashMap<Pos, Plant>, size: (i32, i32)) -> i32{
     }
     total
 }
-
 
 pub fn main() {
     let input = load_file("input.txt");
